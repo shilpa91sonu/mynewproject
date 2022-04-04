@@ -1,0 +1,22 @@
+*** settings ***
+Documentation	using variables for readability and flexibility
+Library		RPA.Browser.Selenium
+Suit Teardown	Close All Browsers
+
+*** Variables ***
+${I_FEEL_LUCKY}		css:.FPdoLc > center:nth-child(1) > input:nth-child(2)
+${SEARCH__URL}		https://www.google.com/search?q=
+${SEARCH_TERM}		cute cat
+
+*** Test Cases ***
+search using hard coded search URL and term
+	Open Available Browser		https://www.google.com/search?q=cute+cat
+
+*** Test cases ***
+Search using variables
+    Open Available Browser    ${SEARCH_URL}${SEARCH_TERM}
+*** Test Cases ***
+Search using local variables
+${search_url}	Set variable	https://duckduckgo.com/?q=
+${search_term}	Set Variable	Robo Corp
+Open Available Browser 	  ${search_url}${search_term}	
